@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(origins = "https://fierce-basin-13622.herokuapp.com", allowCredentials = "true")
+@CrossOrigin(origins = "*", allowCredentials = "true")
 public class UserController {
 
     @Autowired
