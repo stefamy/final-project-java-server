@@ -14,6 +14,7 @@ public class User {
 
     private String firstName;
     private String lastName;
+
     private String email;
     private String phone;
 
@@ -22,10 +23,12 @@ public class User {
     private String city;
     private String state;
     private String zip;
-    private String glutenFree;
-    private String vegetarian;
-    private String vegan;
-    private String nutAllergy;
+
+    private Integer glutenFree;
+    private Integer vegetarian;
+    private Integer vegan;
+    private Integer nutAllergy;
+
     private String otherDietaryRestrictions;
     private String specialRequests;
 
@@ -125,41 +128,41 @@ public class User {
         this.zip = zip;
     }
 
-    public String getGlutenFree() {
+    public Integer getGlutenFree() {
         return glutenFree;
     }
 
-    public void setGlutenFree(String glutenFree) {
+    public void setGlutenFree(Integer glutenFree) {
         this.glutenFree = glutenFree;
     }
 
 
 
-    public String getVegetarian() {
+    public Integer getVegetarian() {
         return vegetarian;
     }
 
-    public void setVegetarian(String vegetarian) {
+    public void setVegetarian(Integer vegetarian) {
         this.vegetarian = vegetarian;
     }
 
 
 
-    public String getVegan() {
+    public Integer getVegan() {
         return vegan;
     }
 
-    public void setVegan(String vegan) {
+    public void setVegan(Integer vegan) {
         this.vegan = vegan;
     }
 
 
 
-    public String getNutAllergy() {
+    public Integer getNutAllergy() {
         return nutAllergy;
     }
 
-    public void setNutAllergy(String nutAllergy) {
+    public void setNutAllergy(Integer nutAllergy) {
         this.nutAllergy = nutAllergy;
     }
 
