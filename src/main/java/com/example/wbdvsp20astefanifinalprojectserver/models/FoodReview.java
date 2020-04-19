@@ -15,7 +15,8 @@ public class FoodReview {
   private Integer rating;
   private String review;
 
-  public FoodReview(Integer id, Integer foodId, Integer reviewerId, Integer supplierId, Integer rating,
+  public FoodReview(Integer id, Integer foodId, Integer reviewerId, Integer supplierId,
+      Integer rating,
       String review) {
     this.id = id;
     this.foodId = foodId;

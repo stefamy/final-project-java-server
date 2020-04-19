@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class RSVP {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;

@@ -15,7 +15,8 @@ public class Assignment {
   private Integer userAssigned;
   private String assigneeComments;
 
-  public Assignment(Integer id, Integer eventId, String name, String description, Integer userAssigned,
+  public Assignment(Integer id, Integer eventId, String name, String description,
+      Integer userAssigned,
       String assigneeComments) {
     this.id = id;
     this.eventId = eventId;

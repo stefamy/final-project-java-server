@@ -1,24 +1,33 @@
 package com.example.wbdvsp20astefanifinalprojectserver.repositories;
 
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+//@Repository
 public interface UserRepository
-        extends CrudRepository<User, Integer> {
+    extends CrudRepository<User, Integer> {
 
-    @Query("SELECT user FROM User user WHERE user.username=:username AND user.password=:password")
-    public User findUserByCredentials(
-            @Param("username") String username,
-            @Param("password") String password
-    );
+  @Query(value = "SELECT * FROM User user WHERE username=:username AND password=:password", nativeQuery = true)
+  User findUserByCredentials(
+      @Param("username") String username,
+      @Param("password") String password
+  );
 
-    @Query("SELECT user FROM User user WHERE id.id=:id")
-    public User findUserById(
-        @Param("id") Integer id
-    );
+  @Query(value = "SELECT * FROM User user WHERE username=:username", nativeQuery = true)
+  User findUserByUsername(
+      @Param("username") String username
+  );
 
+  @Query(value = "SELECT * FROM User user WHERE id=:id", nativeQuery = true)
+  User findUserById(
+      @Param("id") Integer id
+  );
+
+  @Query(value = "SELECT * FROM User user", nativeQuery = true)
+  List<User> findAllUsers();
 
 
 }

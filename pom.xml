@@ -61,48 +61,48 @@
 		</plugins>
 	</build>
 
-<!--	<parent>-->
-<!--		<groupId>org.springframework.boot</groupId>-->
-<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-<!--		<version>2.2.6.RELEASE</version>-->
-<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-<!--	</parent>-->
-<!--	<groupId>com.example</groupId>-->
-<!--	<artifactId>wbdv-sp-20-astefani-final-project-server</artifactId>-->
-<!--	<version>0.0.1-SNAPSHOT</version>-->
-<!--	<name>demo</name>-->
-<!--	<description>Demo project for Spring Boot</description>-->
+	<!--	<parent>-->
+	<!--		<groupId>org.springframework.boot</groupId>-->
+	<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+	<!--		<version>2.2.6.RELEASE</version>-->
+	<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+	<!--	</parent>-->
+	<!--	<groupId>com.example</groupId>-->
+	<!--	<artifactId>wbdv-sp-20-astefani-final-project-server</artifactId>-->
+	<!--	<version>0.0.1-SNAPSHOT</version>-->
+	<!--	<name>demo</name>-->
+	<!--	<description>Demo project for Spring Boot</description>-->
 
-<!--	<properties>-->
-<!--		<java.version>1.8</java.version>-->
-<!--	</properties>-->
+	<!--	<properties>-->
+	<!--		<java.version>1.8</java.version>-->
+	<!--	</properties>-->
 
-<!--	<dependencies>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-web</artifactId>-->
-<!--		</dependency>-->
+	<!--	<dependencies>-->
+	<!--		<dependency>-->
+	<!--			<groupId>org.springframework.boot</groupId>-->
+	<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+	<!--		</dependency>-->
 
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-test</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<groupId>org.junit.vintage</groupId>-->
-<!--					<artifactId>junit-vintage-engine</artifactId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
-<!--		</dependency>-->
-<!--	</dependencies>-->
+	<!--		<dependency>-->
+	<!--			<groupId>org.springframework.boot</groupId>-->
+	<!--			<artifactId>spring-boot-starter-test</artifactId>-->
+	<!--			<scope>test</scope>-->
+	<!--			<exclusions>-->
+	<!--				<exclusion>-->
+	<!--					<groupId>org.junit.vintage</groupId>-->
+	<!--					<artifactId>junit-vintage-engine</artifactId>-->
+	<!--				</exclusion>-->
+	<!--			</exclusions>-->
+	<!--		</dependency>-->
+	<!--	</dependencies>-->
 
-<!--	<build>-->
-<!--		<plugins>-->
-<!--			<plugin>-->
-<!--				<groupId>org.springframework.boot</groupId>-->
-<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--			</plugin>-->
-<!--		</plugins>-->
-<!--	</build>-->
+	<!--	<build>-->
+	<!--		<plugins>-->
+	<!--			<plugin>-->
+	<!--				<groupId>org.springframework.boot</groupId>-->
+	<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+	<!--			</plugin>-->
+	<!--		</plugins>-->
+	<!--	</build>-->
 
 </project>

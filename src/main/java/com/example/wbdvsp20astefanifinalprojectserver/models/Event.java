@@ -1,11 +1,13 @@
 package com.example.wbdvsp20astefanifinalprojectserver.models;
 
-
-import java.util.Date;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "event")
 public class Event {
 
   @Id
@@ -14,7 +16,9 @@ public class Event {
   private Integer hostId;
   private String name;
   private String description;
-  private Date date;
+  private String date;
+  private String startTime;
+  private String endTime;
   private String foodType;
   private String groupType;
   private String specialOccasion;
@@ -26,53 +30,6 @@ public class Event {
   private String locationState;
   private String locationZip;
   private String locationNotes;
-
-
-  public Event(Integer id, Integer hostId, String name, String description, Date date, String foodType,
-      String groupType, String specialOccasion, String dressType, String locationName,
-      String locationStreet1, String locationStreet2, String locationCity,
-      String locationState, String locationZip, String locationNotes) {
-    this.id = id;
-    this.hostId = hostId;
-    this.name = name;
-    this.description = description;
-    this.date = date;
-    this.foodType = foodType;
-    this.groupType = groupType;
-    this.specialOccasion = specialOccasion;
-    this.dressType = dressType;
-    this.locationName = locationName;
-    this.locationStreet1 = locationStreet1;
-    this.locationStreet2 = locationStreet2;
-    this.locationCity = locationCity;
-    this.locationState = locationState;
-    this.locationZip = locationZip;
-    this.locationNotes = locationNotes;
-  }
-  public Event(Integer id) {
-    this.id = id;
-  }
-
-  public Event(Integer hostId, String name, String description, Date date, String foodType,
-      String groupType, String specialOccasion, String dressType, String locationName,
-      String locationStreet1, String locationStreet2, String locationCity,
-      String locationState, String locationZip, String locationNotes) {
-    this.hostId = hostId;
-    this.name = name;
-    this.description = description;
-    this.date = date;
-    this.foodType = foodType;
-    this.groupType = groupType;
-    this.specialOccasion = specialOccasion;
-    this.dressType = dressType;
-    this.locationName = locationName;
-    this.locationStreet1 = locationStreet1;
-    this.locationStreet2 = locationStreet2;
-    this.locationCity = locationCity;
-    this.locationState = locationState;
-    this.locationZip = locationZip;
-    this.locationNotes = locationNotes;
-  }
 
   public Integer getId() {
     return id;
@@ -106,12 +63,28 @@ public class Event {
     this.description = description;
   }
 
-  public Date getDate() {
+  public String getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(String date) {
     this.date = date;
+  }
+
+  public String getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
+  public String getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(String endTime) {
+    this.endTime = endTime;
   }
 
   public String getFoodType() {
