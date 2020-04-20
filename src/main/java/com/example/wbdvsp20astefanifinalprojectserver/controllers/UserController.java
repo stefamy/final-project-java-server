@@ -1,12 +1,20 @@
 package com.example.wbdvsp20astefanifinalprojectserver.controllers;
 
+import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
+import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
+import com.example.wbdvsp20astefanifinalprojectserver.models.PublicProfile;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
+import com.example.wbdvsp20astefanifinalprojectserver.services.AssignmentService;
+import com.example.wbdvsp20astefanifinalprojectserver.services.InviteService;
 import com.example.wbdvsp20astefanifinalprojectserver.services.UserService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +27,10 @@ public class UserController {
 
   @Autowired
   UserService service;
+  @Autowired
+  AssignmentService assignmentService;
+  @Autowired
+  InviteService inviteService;
 
   @PostMapping("/logout")
   public void logout(HttpSession session) {
@@ -44,6 +56,23 @@ public class UserController {
   public User profile(HttpSession session) {
     User profile = (User) session.getAttribute("profile");
     return profile;
+  }
+
+
+  @GetMapping("/api/user/{username}")
+  public PublicProfile findUserByUsername(@PathVariable("username") String username) {
+    PublicProfile profile = service.findUserByUsername(username);
+    return profile;
+  }
+
+  @GetMapping("/api/user/{userId}/assignments")
+  public List<Assignment> findAssignmentByAssigneeUserId(@PathVariable("userId") Integer userId) {
+    return assignmentService.findAssignmentByAssigneeId(userId);
+  }
+
+  @GetMapping("/api/user/{userId}/invites")
+  public List<Invite> findInviteByGuestId(@PathVariable("userId") Integer userId) {
+    return inviteService.findInviteByGuestId(userId);
   }
 
   @PutMapping("/profile")

@@ -12,8 +12,7 @@ public interface UserRepository
 
   @Query(value = "SELECT * FROM User user WHERE username=:username AND password=:password", nativeQuery = true)
   User findUserByCredentials(
-      @Param("username") String username,
-      @Param("password") String password
+      @Param("username") String username, @Param("password") String password
   );
 
   @Query(value = "SELECT * FROM User user WHERE username=:username", nativeQuery = true)

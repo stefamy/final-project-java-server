@@ -17,7 +17,7 @@ public class PublicProfile {
     this.username = user.getUsername();
     this.id = user.getId();
     this.firstName = user.getFirstName();
-    this.lastName = user.getLastName().substring(0, 0);
+    this.lastName = user.getLastName().substring(0, 1);
     this.glutenFree = user.getGlutenFree();
     this.vegetarian = user.getVegetarian();
     this.vegan = user.getVegan();

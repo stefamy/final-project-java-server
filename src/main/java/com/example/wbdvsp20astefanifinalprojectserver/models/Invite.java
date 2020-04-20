@@ -1,11 +1,14 @@
 package com.example.wbdvsp20astefanifinalprojectserver.models;
 
-import java.util.Date;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class RSVP {
+@Entity
+@Table(name = "invite")
+public class Invite {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,31 +16,9 @@ public class RSVP {
   private Integer eventId;
   private Integer guestId;
   private String response;
-  private Date invitationDate;
-  private Date responseDate;
-
-  public RSVP(Integer id, Integer eventId, Integer guestId, String response, Date invitationDate,
-      Date responseDate) {
-    this.id = id;
-    this.eventId = eventId;
-    this.guestId = guestId;
-    this.response = response;
-    this.invitationDate = invitationDate;
-    this.responseDate = responseDate;
-  }
-
-  public RSVP(Integer eventId, Integer guestId, String response, Date invitationDate,
-      Date responseDate) {
-    this.eventId = eventId;
-    this.guestId = guestId;
-    this.response = response;
-    this.invitationDate = invitationDate;
-    this.responseDate = responseDate;
-  }
-
-  public RSVP(Integer id) {
-    this.id = id;
-  }
+  private String comments;
+  private String invitationDate;
+  private String responseDate;
 
   public Integer getId() {
     return id;
@@ -71,19 +52,27 @@ public class RSVP {
     this.response = response;
   }
 
-  public Date getInvitationDate() {
+  public String getComments() {
+    return comments;
+  }
+
+  public void setComments(String comments) {
+    this.comments = comments;
+  }
+
+  public String getInvitationDate() {
     return invitationDate;
   }
 
-  public void setInvitationDate(Date invitationDate) {
+  public void setInvitationDate(String invitationDate) {
     this.invitationDate = invitationDate;
   }
 
-  public Date getResponseDate() {
+  public String getResponseDate() {
     return responseDate;
   }
 
-  public void setResponseDate(Date responseDate) {
+  public void setResponseDate(String responseDate) {
     this.responseDate = responseDate;
   }
 }

@@ -1,9 +1,13 @@
 package com.example.wbdvsp20astefanifinalprojectserver.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "assignment")
 public class Assignment {
 
   @Id
@@ -14,30 +18,6 @@ public class Assignment {
   private String description;
   private Integer userAssigned;
   private String assigneeComments;
-
-  public Assignment(Integer id, Integer eventId, String name, String description,
-      Integer userAssigned,
-      String assigneeComments) {
-    this.id = id;
-    this.eventId = eventId;
-    this.name = name;
-    this.description = description;
-    this.userAssigned = userAssigned;
-    this.assigneeComments = assigneeComments;
-  }
-
-  public Assignment(Integer id, Integer eventId) {
-    this.id = id;
-    this.eventId = eventId;
-  }
-
-  public Assignment(String name, String description, Integer userAssigned,
-      String assigneeComments) {
-    this.name = name;
-    this.description = description;
-    this.userAssigned = userAssigned;
-    this.assigneeComments = assigneeComments;
-  }
 
   public Integer getId() {
     return id;
