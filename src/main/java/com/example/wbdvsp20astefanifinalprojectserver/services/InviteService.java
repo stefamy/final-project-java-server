@@ -27,7 +27,7 @@ public class InviteService {
 
     public Guest createInvite(Integer eventId, Invite invite) {
       invite.setEventId(eventId);
-      User user = userService.findUserByEmailAddress(invite.getEmail());
+      User user = userRepository.findUserByEmailAddress(invite.getEmail());
       if (user == null) {
         user = new User();
         user.setFirstName(invite.getFirstName());
@@ -35,7 +35,7 @@ public class InviteService {
         user.setEmail(invite.getEmail());
         user.setUsername(invite.getEmail());
         user.setAccountClaimed(0);
-        userService.createNewUser(user);
+        user = userRepository.save(user);
       }
       invite.setGuestId(user.getId());
       repository.save(invite);

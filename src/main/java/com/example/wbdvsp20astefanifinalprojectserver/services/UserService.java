@@ -63,6 +63,8 @@ public class UserService {
       // User exists and can be claimed
       currentUser.setUsername(newUser.getUsername());
       currentUser.setPassword(newUser.getPassword());
+//      currentUser.setFirstName(newUser.getFirstName());
+//      currentUser.setLastName(newUser.getFirstName());
       currentUser.setAccountClaimed(1);
       userRepository.save(currentUser);
       return currentUser.cloaked();
@@ -70,6 +72,10 @@ public class UserService {
       // User exists and is claimed
       return null;
     } else {
+      // User does not exist, create new account and claim it:
+      newUser.setAccountClaimed(1);
+      newUser.setFirstName("Anonymous");
+      newUser.setLastName("Partygoer");
       User createdUser = userRepository.save(newUser);
       return createdUser.cloaked();
     }
