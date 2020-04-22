@@ -1,5 +1,6 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
+import com.example.wbdvsp20astefanifinalprojectserver.models.Guest;
 import com.example.wbdvsp20astefanifinalprojectserver.models.GuestList;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
@@ -15,23 +16,24 @@ public class InviteService {
 
     @Autowired
     InviteRepository repository;
-    @Autowired
-    UserRepository userRepository;
+
     @Autowired
     UserService userService;
 
-    public Invite createInvite(Integer eventId, Invite invite) {
+    public Guest createInvite(Integer eventId, Invite invite) {
       invite.setEventId(eventId);
-      User user = userRepository.findUserByEmailAddress(invite.getEmail());
-      if (user != null) {
+      User user = userService.findUserByEmailAddress(invite.getEmail());
+      if (user == null) {
         user = new User();
         user.setFirstName(invite.getFirstName());
         user.setLastName(invite.getLastName());
         user.setEmail(invite.getEmail());
-        userRepository.save(user);
+        user.setUsername(invite.getEmail());
+        userService.createNewUser(user);
       }
       invite.setGuestId(user.getId());
-      return repository.save(invite);
+      repository.save(invite);
+      return new Guest(user, invite);
     }
 
     public Invite findInviteById(Integer inviteId) {
@@ -43,7 +45,7 @@ public class InviteService {
       List<User> users = new ArrayList<>();
       for (int i = 0; i < invites.size(); i++) {
           User user = userService.findUserByUserId(String.valueOf(invites.get(i).getGuestId()));
-          users.add(user);
+          users.add(user.cloaked());
       }
       return new GuestList(users, invites);
     }

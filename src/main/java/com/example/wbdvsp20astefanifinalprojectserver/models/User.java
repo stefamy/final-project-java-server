@@ -36,6 +36,8 @@ public class User {
   private String otherDietaryRestrictions;
   private String specialRequests;
 
+  private Integer accountClaimed;
+
   public Integer getId() {
     return id;
   }
@@ -183,17 +185,17 @@ public class User {
     this.specialRequests = specialRequests;
   }
 
+  public Integer getAccountClaimed() {
+    return accountClaimed;
+  }
+
+  public void setAccountClaimed(Integer accountClaimed) {
+    this.accountClaimed = accountClaimed;
+  }
+
   public User cloaked() {
     this.password = "***";
     return this;
-  }
-
-  public PublicProfile publicProfile() {
-    return new PublicProfile(this);
-  }
-
-  public ProtectedProfile protectedProfile() {
-    return new ProtectedProfile(this);
   }
 
 }

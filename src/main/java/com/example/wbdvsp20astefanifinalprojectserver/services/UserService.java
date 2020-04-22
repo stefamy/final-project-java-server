@@ -20,13 +20,36 @@ public class UserService {
     return null;
   }
 
+
   public User findUserByUserId(String userId) {
     return userRepository.findUserByUserId(userId);
   }
 
-  public User createNewUser(User user) {
-    User newUser = userRepository.save(user);
-    return newUser.cloaked();
+  public User findUserByEmailAddress(String email) {
+    User updatedUser = userRepository.findUserByEmailAddress(email);
+    if (updatedUser != null) {
+      return updatedUser.cloaked();
+    }
+    return null;
+  }
+
+  public User createNewUser(User newUser) {
+    String email = newUser.getEmail();
+    User currentUser = userRepository.findUserByEmailAddress(email);
+    if (currentUser != null && currentUser.getAccountClaimed() < 1) {
+      // User exists and can be claimed
+      currentUser.setUsername(newUser.getUsername());
+      currentUser.setPassword(newUser.getPassword());
+      currentUser.setAccountClaimed(1);
+      userRepository.save(currentUser);
+      return currentUser.cloaked();
+    } else if (currentUser != null && currentUser.getAccountClaimed() == 1) {
+      // User exists and is claimed
+      return null;
+    } else {
+      User createdUser = userRepository.save(newUser);
+      return createdUser.cloaked();
+    }
   }
 
   public User updateUser(User user) {

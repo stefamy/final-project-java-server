@@ -1,5 +1,6 @@
 package com.example.wbdvsp20astefanifinalprojectserver.controllers;
 
+import com.example.wbdvsp20astefanifinalprojectserver.models.Guest;
 import com.example.wbdvsp20astefanifinalprojectserver.models.GuestList;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 
     // CREATE Invite for an event
     @PostMapping("/api/events/{eventId}/invites")
-    public Invite createInvite(@PathVariable("eventId") Integer eventId, @RequestBody Invite invite) {
+    public Guest createInvite(@PathVariable("eventId") Integer eventId, @RequestBody Invite invite) {
       return service.createInvite(eventId, invite);
     }
 
