@@ -3,6 +3,7 @@ package com.example.wbdvsp20astefanifinalprojectserver.controllers;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
+import com.example.wbdvsp20astefanifinalprojectserver.models.UserAvailability;
 import com.example.wbdvsp20astefanifinalprojectserver.services.AssignmentService;
 import com.example.wbdvsp20astefanifinalprojectserver.services.InviteService;
 import com.example.wbdvsp20astefanifinalprojectserver.services.UserService;
@@ -49,6 +50,13 @@ public class UserController {
     return newUser;
   }
 
+  @PostMapping("/register/validate")
+  public UserAvailability areEmailAndUsernameAvailable(@RequestBody User user) {
+    UserAvailability result = service.areEmailAndUsernameAvailable(user);
+    return result;
+  }
+
+
   @PostMapping("/profile")
   public User profile(HttpSession session) {
     User profile = (User) session.getAttribute("profile");
@@ -56,9 +64,9 @@ public class UserController {
   }
 
 
-  @GetMapping("/api/user/{userId}")
-  public User findUserByUserId(@PathVariable("userId") String userId) {
-    User user = service.findUserByUserId(userId);
+  @GetMapping("/api/user/{username}")
+  public User findUserByUsername(@PathVariable("username") String username) {
+    User user = service.findUserByUsername(username);
     return user;
   }
 
@@ -78,6 +86,7 @@ public class UserController {
     session.setAttribute("profile", updatedProfile);
     return updatedProfile;
   }
+
 
   @GetMapping("/api/users")
   public List<User> testFindAllUsers() {

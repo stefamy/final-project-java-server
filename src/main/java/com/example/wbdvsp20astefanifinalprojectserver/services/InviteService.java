@@ -7,6 +7,7 @@ import com.example.wbdvsp20astefanifinalprojectserver.models.User;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.InviteRepository;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.UserRepository;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,11 @@ public class InviteService {
     InviteRepository repository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     UserService userService;
+
 
     public Guest createInvite(Integer eventId, Invite invite) {
       invite.setEventId(eventId);
@@ -29,6 +34,7 @@ public class InviteService {
         user.setLastName(invite.getLastName());
         user.setEmail(invite.getEmail());
         user.setUsername(invite.getEmail());
+        user.setAccountClaimed(0);
         userService.createNewUser(user);
       }
       invite.setGuestId(user.getId());
@@ -65,5 +71,16 @@ public class InviteService {
     }
 
 
+    public Invite createFirstInvite(Integer userId, Integer eventId) {
+      User eventHost = userRepository.findUserByUserId(String.valueOf(userId));
+      Invite invite = new Invite();
+      invite.setGuestId(userId);
+      invite.setEventId(eventId);
+      invite.setFirstName(eventHost.getFirstName());
+      invite.setLastName(eventHost.getLastName());
+      invite.setEmail(eventHost.getEmail());
+      invite.setResponse("Yes");
+      return repository.save(invite);
+    }
 
   }

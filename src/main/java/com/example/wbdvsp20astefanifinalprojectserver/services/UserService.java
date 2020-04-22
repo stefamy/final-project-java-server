@@ -1,6 +1,7 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
+import com.example.wbdvsp20astefanifinalprojectserver.models.UserAvailability;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,12 @@ public class UserService {
     return null;
   }
 
-
   public User findUserByUserId(String userId) {
     return userRepository.findUserByUserId(userId);
+  }
+
+  public User findUserByUsername(String username) {
+    return userRepository.findUserByUsername(username);
   }
 
   public User findUserByEmailAddress(String email) {
@@ -32,6 +36,25 @@ public class UserService {
     }
     return null;
   }
+
+  public UserAvailability areEmailAndUsernameAvailable(User user) {
+    User userEmail = userRepository.findUserByEmailAddress(user.getEmail());
+    User userUsername = userRepository.findUserByUsername(user.getUsername());
+    boolean email;
+    boolean username;
+    if (userEmail == null || userEmail.getAccountClaimed() < 1) {
+      email = true;
+    } else {
+      email = false;
+    }
+    if (userUsername == null || userUsername.getAccountClaimed() < 1) {
+      username = true;
+    } else {
+      username = false;
+    }
+    return new UserAvailability(email, username);
+  }
+
 
   public User createNewUser(User newUser) {
     String email = newUser.getEmail();
@@ -63,6 +86,7 @@ public class UserService {
 
   public List<User> findAllUsers() {
     return userRepository.findAllUsers();
+
   }
 
 }

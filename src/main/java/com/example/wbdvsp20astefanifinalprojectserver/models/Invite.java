@@ -102,4 +102,6 @@ public class Invite {
   public void setResponseDate(String responseDate) {
     this.responseDate = responseDate;
   }
+
+
 }

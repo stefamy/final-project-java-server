@@ -39,6 +39,17 @@ public class AssignmentService {
       return 1;
     }
 
+     public int createSampleAssignment(Integer eventId) {
+      Assignment sampleAssignment = new Assignment();
+      sampleAssignment.setEventId(eventId);
+      sampleAssignment.setTitle("This is an event assignment.");
+      sampleAssignment.setDescription("This is only a sample. Delete or edit this one, and make some of your own!");
+      sampleAssignment.setStatus("Pending");
+      sampleAssignment.setStatus("Event Prep");
+      repository.save(sampleAssignment);
+      return 1;
+     }
 
 
-  }
+
+}
