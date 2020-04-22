@@ -23,7 +23,7 @@ public interface InviteRepository extends CrudRepository<Invite, Integer> {
     public Invite findInviteById(@Param("id") Integer id);
 
     @Query(value = "SELECT * FROM Invite invite WHERE guest_id=:userId", nativeQuery = true)
-    public List<Invite> findInviteByGuestId(@Param("userId") Integer userId);
+    public List<Invite> findInvitesByGuestId(@Param("userId") Integer userId);
 
   }
 

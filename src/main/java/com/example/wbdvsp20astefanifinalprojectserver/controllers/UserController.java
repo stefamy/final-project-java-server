@@ -2,7 +2,6 @@ package com.example.wbdvsp20astefanifinalprojectserver.controllers;
 
 import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
-import com.example.wbdvsp20astefanifinalprojectserver.models.PublicProfile;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
 import com.example.wbdvsp20astefanifinalprojectserver.services.AssignmentService;
 import com.example.wbdvsp20astefanifinalprojectserver.services.InviteService;
@@ -10,8 +9,6 @@ import com.example.wbdvsp20astefanifinalprojectserver.services.UserService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,10 +56,10 @@ public class UserController {
   }
 
 
-  @GetMapping("/api/user/{username}")
-  public PublicProfile findUserByUsername(@PathVariable("username") String username) {
-    PublicProfile profile = service.findUserByUsername(username);
-    return profile;
+  @GetMapping("/api/user/{userId}")
+  public User findUserByUserId(@PathVariable("userId") String userId) {
+    User user = service.findUserByUserId(userId);
+    return user;
   }
 
   @GetMapping("/api/user/{userId}/assignments")
@@ -71,8 +68,8 @@ public class UserController {
   }
 
   @GetMapping("/api/user/{userId}/invites")
-  public List<Invite> findInviteByGuestId(@PathVariable("userId") Integer userId) {
-    return inviteService.findInviteByGuestId(userId);
+  public List<Invite> findInvitesByGuestId(@PathVariable("userId") Integer userId) {
+    return inviteService.findInvitesByGuestId(userId);
   }
 
   @PutMapping("/profile")

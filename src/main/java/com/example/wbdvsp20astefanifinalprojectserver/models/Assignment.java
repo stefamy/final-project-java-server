@@ -14,10 +14,17 @@ public class Assignment {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private Integer eventId;
-  private String name;
+  private String title;
   private String description;
-  private Integer userAssigned;
+  private String status;
+  private String assigneeFirstName;
+  private String assigneeLastName;
+  private String assigneeEmail;
   private String assigneeComments;
+  private Integer assigneeUserId;
+  private String dateOfRequest;
+  private String dateOfResponse;
+  private String type;
 
   public Integer getId() {
     return id;
@@ -35,12 +42,12 @@ public class Assignment {
     this.eventId = eventId;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public String getDescription() {
@@ -51,12 +58,36 @@ public class Assignment {
     this.description = description;
   }
 
-  public Integer getUserAssigned() {
-    return userAssigned;
+  public String getStatus() {
+    return status;
   }
 
-  public void setUserAssigned(Integer userAssigned) {
-    this.userAssigned = userAssigned;
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  public String getAssigneeFirstName() {
+    return assigneeFirstName;
+  }
+
+  public void setAssigneeFirstName(String assigneeFirstName) {
+    this.assigneeFirstName = assigneeFirstName;
+  }
+
+  public String getAssigneeLastName() {
+    return assigneeLastName;
+  }
+
+  public void setAssigneeLastName(String assigneeLastName) {
+    this.assigneeLastName = assigneeLastName;
+  }
+
+  public String getAssigneeEmail() {
+    return assigneeEmail;
+  }
+
+  public void setAssigneeEmail(String assigneeEmail) {
+    this.assigneeEmail = assigneeEmail;
   }
 
   public String getAssigneeComments() {
@@ -65,5 +96,37 @@ public class Assignment {
 
   public void setAssigneeComments(String assigneeComments) {
     this.assigneeComments = assigneeComments;
+  }
+
+  public Integer getAssigneeUserId() {
+    return assigneeUserId;
+  }
+
+  public void setAssigneeUserId(Integer assigneeUserId) {
+    this.assigneeUserId = assigneeUserId;
+  }
+
+  public String getDateOfRequest() {
+    return dateOfRequest;
+  }
+
+  public void setDateOfRequest(String dateOfRequest) {
+    this.dateOfRequest = dateOfRequest;
+  }
+
+  public String getDateOfResponse() {
+    return dateOfResponse;
+  }
+
+  public void setDateOfResponse(String dateOfResponse) {
+    this.dateOfResponse = dateOfResponse;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 }

@@ -1,6 +1,5 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
-import com.example.wbdvsp20astefanifinalprojectserver.models.PublicProfile;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.UserRepository;
 import java.util.List;
@@ -21,12 +20,8 @@ public class UserService {
     return null;
   }
 
-  public PublicProfile findUserByUsername(String username) {
-    User newUser = userRepository.findUserByUsername(username);
-    if (newUser != null) {
-      return newUser.publicProfile();
-    }
-    return null;
+  public User findUserByUserId(String userId) {
+    return userRepository.findUserByUserId(userId);
   }
 
   public User createNewUser(User user) {

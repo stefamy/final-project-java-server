@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
     // CREATE Assignment for an event
     @PostMapping("/api/events/{eventId}/assignments")
-    public Assignment createEvent(@PathVariable("eventId") Integer eventId, @RequestBody Assignment assignment) {
+    public Assignment createAssignment(@PathVariable("eventId") Integer eventId, @RequestBody Assignment assignment) {
       return service.createAssignment(eventId, assignment);
     }
 
