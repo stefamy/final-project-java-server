@@ -25,6 +25,16 @@ public class Assignment {
   private String dateOfRequest;
   private String dateOfResponse;
   private String type;
+  private String tasteCat;
+  private String dishCat;
+  private Integer glutenFree;
+  private Integer vegetarian;
+  private Integer vegan;
+  private Integer nutFree;
+  private String otherDietaryNotes;
+  private String recipeLink;
+  private Integer internalRecipe;
+
 
   public Integer getId() {
     return id;
@@ -128,5 +138,77 @@ public class Assignment {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public String getTasteCat() {
+    return tasteCat;
+  }
+
+  public void setTasteCat(String tasteCat) {
+    this.tasteCat = tasteCat;
+  }
+
+  public String getDishCat() {
+    return dishCat;
+  }
+
+  public void setDishCat(String dishCat) {
+    this.dishCat = dishCat;
+  }
+
+  public Integer getGlutenFree() {
+    return glutenFree;
+  }
+
+  public void setGlutenFree(Integer glutenFree) {
+    this.glutenFree = glutenFree;
+  }
+
+  public Integer getVegetarian() {
+    return vegetarian;
+  }
+
+  public void setVegetarian(Integer vegetarian) {
+    this.vegetarian = vegetarian;
+  }
+
+  public Integer getVegan() {
+    return vegan;
+  }
+
+  public void setVegan(Integer vegan) {
+    this.vegan = vegan;
+  }
+
+  public Integer getNutFree() {
+    return nutFree;
+  }
+
+  public void setNutFree(Integer nutFree) {
+    this.nutFree = nutFree;
+  }
+
+  public String getOtherDietaryNotes() {
+    return otherDietaryNotes;
+  }
+
+  public void setOtherDietaryNotes(String otherDietaryNotes) {
+    this.otherDietaryNotes = otherDietaryNotes;
+  }
+
+  public String getRecipeLink() {
+    return recipeLink;
+  }
+
+  public void setRecipeLink(String recipeLink) {
+    this.recipeLink = recipeLink;
+  }
+
+  public Integer getInternalRecipe() {
+    return internalRecipe;
+  }
+
+  public void setInternalRecipe(Integer internalRecipe) {
+    this.internalRecipe = internalRecipe;
   }
 }
