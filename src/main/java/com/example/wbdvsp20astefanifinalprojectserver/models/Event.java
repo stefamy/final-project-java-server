@@ -30,6 +30,9 @@ public class Event {
   private String locationState;
   private String locationZip;
   private String locationNotes;
+  private String hostUsername;
+  private String hostFirstName;
+  private String hostLastName;
 
   public Integer getId() {
     return id;
@@ -173,5 +176,29 @@ public class Event {
 
   public void setLocationNotes(String locationNotes) {
     this.locationNotes = locationNotes;
+  }
+
+  public String getHostUsername() {
+    return hostUsername;
+  }
+
+  public void setHostUsername(String hostUsername) {
+    this.hostUsername = hostUsername;
+  }
+
+  public String getHostFirstName() {
+    return hostFirstName;
+  }
+
+  public void setHostFirstName(String hostFirstName) {
+    this.hostFirstName = hostFirstName;
+  }
+
+  public String getHostLastName() {
+    return hostLastName;
+  }
+
+  public void setHostLastName(String hostLastName) {
+    this.hostLastName = hostLastName;
   }
 }

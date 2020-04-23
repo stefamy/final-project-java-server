@@ -33,8 +33,17 @@ public class EventService {
   @Autowired
   AssignmentRepository assignmentRepository;
 
+  @Autowired
+  UserRepository userRepository;
+
+
+
   public Event createEvent(Integer userId, Event event) {
+    User user = userRepository.findUserByUserId(String.valueOf(userId));
     event.setHostId(userId);
+    event.setHostFirstName(user.getFirstName());
+    event.setHostLastName(user.getLastName());
+    event.setHostUsername(user.getUsername());
     Event newEvent = repository.save(event);
     inviteService.createFirstInvite(userId, newEvent.getId());
     assignmentService.createSampleAssignment(newEvent.getId());
