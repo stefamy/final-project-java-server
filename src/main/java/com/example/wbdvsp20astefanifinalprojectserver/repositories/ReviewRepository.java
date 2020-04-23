@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
 
-  @Query(value = "SELECT * FROM Review review", nativeQuery = true)
-  List<Review> findAllReviews();
+  @Query(value = "SELECT * FROM Review review LIMIT :limit", nativeQuery = true)
+  List<Review> findAllReviews(@Param("limit") Integer limit);
 
 
   @Query(value ="SELECT * FROM Review review WHERE user_id=:userId", nativeQuery = true)

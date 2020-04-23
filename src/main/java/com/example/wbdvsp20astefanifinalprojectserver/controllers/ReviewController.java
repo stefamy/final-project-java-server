@@ -46,9 +46,9 @@ import org.springframework.web.bind.annotation.RestController;
     }
 
     // READ All reviews for recipe
-    @GetMapping("/api/reviews")
-    public List<Review> findAllReviews() {
-      return service.findAllReviews();
+    @GetMapping("/api/reviews/limit/{limit}")
+    public List<Review> findAllReviews(@PathVariable("limit") Integer limit) {
+      return service.findAllReviews(limit);
     }
 
 

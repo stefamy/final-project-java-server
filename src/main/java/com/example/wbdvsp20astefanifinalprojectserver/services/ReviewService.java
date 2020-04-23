@@ -23,8 +23,8 @@ public class ReviewService {
     return repository.findReviewByReviewId(reviewId);
   }
 
-  public List<Review> findAllReviews() {
-    return repository.findAllReviews();
+  public List<Review> findAllReviews(Integer limit) {
+    return repository.findAllReviews(limit);
   }
 
   public List<Review> findAllReviewsByUserId(Integer userId) {
