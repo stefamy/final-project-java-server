@@ -21,7 +21,7 @@ public class Invite {
   private String response;
   private String comments;
   private String invitationDate;
-  private String responseDate;
+  private String eventDate;
 
   public Integer getId() {
     return id;
@@ -95,12 +95,12 @@ public class Invite {
     this.invitationDate = invitationDate;
   }
 
-  public String getResponseDate() {
-    return responseDate;
+  public String getEventDate() {
+    return eventDate;
   }
 
-  public void setResponseDate(String responseDate) {
-    this.responseDate = responseDate;
+  public void setEventDate(String eventDate) {
+    this.eventDate = eventDate;
   }
 
 
