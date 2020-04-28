@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
       return service.findAllReviewsForFoodId(foodId);
     }
 
-    // READ All reviews for recipe
+    // READ All reviews by user id
     @GetMapping("/api/user/{userId}/reviews")
     public List<Review> findAllReviewsByUserId(@PathVariable("userId") Integer userId) {
       return service.findAllReviewsByUserId(userId);

@@ -1,5 +1,11 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
+import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
+import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
+import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
+import com.example.wbdvsp20astefanifinalprojectserver.models.RSVP;
+import com.example.wbdvsp20astefanifinalprojectserver.models.UserData;
+import com.example.wbdvsp20astefanifinalprojectserver.models.Review;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
 import com.example.wbdvsp20astefanifinalprojectserver.models.UserAvailability;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.UserRepository;
@@ -13,13 +19,14 @@ public class UserService {
   @Autowired
   UserRepository userRepository;
 
-  public User findUserByCredentials(String username, String password) {
-    User newUser = userRepository.findUserByCredentials(username, password);
-    if (newUser != null) {
-      return newUser.cloaked();
-    }
-    return null;
-  }
+  @Autowired
+  AssignmentService assignmentService;
+  @Autowired
+  InviteService inviteService;
+  @Autowired
+  ReviewService reviewService;
+  @Autowired
+  EventService eventService;
 
   public User findUserByUserId(String userId) {
     return userRepository.findUserByUserId(userId);
@@ -29,12 +36,38 @@ public class UserService {
     return userRepository.findUserByUsername(username);
   }
 
+  public User findUserByCredentialsEmail(String email, String password) {
+    User newUser = userRepository.findUserByCredentialsEmail(email, password);
+    if (newUser != null) {
+      return newUser.cloaked();
+    }
+    return null;
+  }
+
+  public User findUserByCredentials(String username, String password) {
+    User newUser = userRepository.findUserByCredentials(username, password);
+    if (newUser != null) {
+      return newUser.cloaked();
+    }
+    return null;
+  }
+
   public User findUserByEmailAddress(String email) {
     User updatedUser = userRepository.findUserByEmailAddress(email);
     if (updatedUser != null) {
       return updatedUser.cloaked();
     }
     return null;
+  }
+
+  public UserData findCurrentUserData(User user) {
+    User userCloaked = user.cloaked();
+    List<Assignment> assignments = assignmentService.findAssignmentByAssigneeId(userCloaked.getId());
+    List<RSVP> rsvps = inviteService.findRSVPsByGuestId(userCloaked.getId());
+    List<Event> events = eventService.findEventsByHost(userCloaked.getId());
+    List<Review> reviews = reviewService.findAllReviewsByUserId(userCloaked.getId());
+    UserData userData = new UserData(userCloaked, assignments, rsvps, events, reviews);
+    return userData;
   }
 
   public UserAvailability areEmailAndUsernameAvailable(User user) {
@@ -56,6 +89,11 @@ public class UserService {
   }
 
 
+  public User createNewUserAlt(User newUser) {
+    newUser.setUsername(newUser.getEmail());
+    return userRepository.save(newUser);
+  }
+
   public User createNewUser(User newUser) {
     String email = newUser.getEmail();
     User currentUser = userRepository.findUserByEmailAddress(email);
@@ -63,8 +101,6 @@ public class UserService {
       // User exists and can be claimed
       currentUser.setUsername(newUser.getUsername());
       currentUser.setPassword(newUser.getPassword());
-//      currentUser.setFirstName(newUser.getFirstName());
-//      currentUser.setLastName(newUser.getFirstName());
       currentUser.setAccountClaimed(1);
       userRepository.save(currentUser);
       return currentUser.cloaked();
@@ -92,7 +128,6 @@ public class UserService {
 
   public List<User> findAllUsers() {
     return userRepository.findAllUsers();
-
   }
 
 }

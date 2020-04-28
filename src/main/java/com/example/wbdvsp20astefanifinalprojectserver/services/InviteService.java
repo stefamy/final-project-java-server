@@ -1,8 +1,10 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
+import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Guest;
 import com.example.wbdvsp20astefanifinalprojectserver.models.GuestList;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
+import com.example.wbdvsp20astefanifinalprojectserver.models.RSVP;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.InviteRepository;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.UserRepository;
@@ -24,6 +26,8 @@ public class InviteService {
     @Autowired
     UserService userService;
 
+    @Autowired
+    EventService eventService;
 
     public Guest createInvite(Integer eventId, Invite invite) {
       invite.setEventId(eventId);
@@ -46,6 +50,7 @@ public class InviteService {
       return repository.findInviteById(inviteId);
     }
 
+
     public GuestList findAllInvitesForEvent(Integer eventId) {
       List<Invite> invites = repository.findAllInvitesForEvent(eventId);
       List<User> users = new ArrayList<>();
@@ -54,6 +59,16 @@ public class InviteService {
           users.add(user.cloaked());
       }
       return new GuestList(users, invites);
+    }
+
+    public List<RSVP> findRSVPsByGuestId(Integer userId) {
+      List<Invite> invites = repository.findInvitesByGuestId(userId);
+      List<RSVP> rsvps = new ArrayList<>();
+      for (int i = 0; i < invites.size(); i++) {
+        Event event = eventService.findEventById(invites.get(i).getEventId());
+        rsvps.add(new RSVP(invites.get(i), event));
+      }
+      return rsvps;
     }
 
     public List<Invite> findInvitesByGuestId(Integer userId) {

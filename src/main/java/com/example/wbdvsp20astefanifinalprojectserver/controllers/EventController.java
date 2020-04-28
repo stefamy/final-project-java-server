@@ -39,11 +39,11 @@ public class EventController {
         return service.findEventsByHost(hostId);
     }
 
-  // READ All events for guest
-  @GetMapping("/api/events/guest/{guestId}")
-  public List<Event> findEventsByGuest(@PathVariable("guestId") Integer guestId) {
-    return service.findEventsByGuest(guestId);
-  }
+    // READ All events for guest
+    @GetMapping("/api/events/guest/{guestId}")
+    public List<Event> findEventsByGuest(@PathVariable("guestId") Integer guestId) {
+      return service.findEventsByGuest(guestId);
+    }
 
   // UPDATE An event
     @PutMapping("/api/events/{eventId}")

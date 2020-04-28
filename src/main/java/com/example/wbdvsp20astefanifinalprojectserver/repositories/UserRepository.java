@@ -15,6 +15,11 @@ public interface UserRepository
       @Param("username") String username, @Param("password") String password
   );
 
+  @Query(value = "SELECT * FROM User user WHERE email=:email AND password=:password", nativeQuery = true)
+  User findUserByCredentialsEmail(
+      @Param("email") String email, @Param("password") String password
+  );
+
   @Query(value = "SELECT * FROM User user WHERE id=:userId", nativeQuery = true)
   User findUserByUserId(
       @Param("userId") String userId

@@ -53,4 +53,10 @@ import org.springframework.web.bind.annotation.RestController;
       return service.deleteAssignment(assignmentId);
     }
 
+    // READ Assignments by assignee userId
+   @GetMapping("/api/users/{userId}/assignments")
+   public List<Assignment> findAssignmentByAssigneeId(@PathVariable("userId") Integer userId) {
+     return service.findAssignmentByAssigneeId(userId);
+   }
+
   }

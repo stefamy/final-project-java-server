@@ -57,4 +57,11 @@ import org.springframework.web.bind.annotation.RestController;
       return service.deleteInvite(inviteId);
     }
 
+   // READ Invite by invitee userId
+   @GetMapping("/api/users/{userId}/invites")
+   public List<Invite> findInvitesByGuestId(@PathVariable("userId") Integer userId) {
+      return service.findInvitesByGuestId(userId);
+   }
+
+
   }
