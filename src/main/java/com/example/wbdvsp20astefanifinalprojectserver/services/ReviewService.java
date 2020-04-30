@@ -1,8 +1,6 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
-import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Review;
-import com.example.wbdvsp20astefanifinalprojectserver.repositories.EventRepository;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.ReviewRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

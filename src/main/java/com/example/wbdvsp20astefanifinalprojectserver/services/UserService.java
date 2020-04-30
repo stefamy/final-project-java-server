@@ -1,9 +1,8 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
-import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
-import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
 import com.example.wbdvsp20astefanifinalprojectserver.models.RSVP;
+import com.example.wbdvsp20astefanifinalprojectserver.models.Task;
 import com.example.wbdvsp20astefanifinalprojectserver.models.UserData;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Review;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
@@ -20,7 +19,7 @@ public class UserService {
   UserRepository userRepository;
 
   @Autowired
-  AssignmentService assignmentService;
+  TaskService taskService;
   @Autowired
   InviteService inviteService;
   @Autowired
@@ -62,11 +61,11 @@ public class UserService {
 
   public UserData findCurrentUserData(User user) {
     User userCloaked = user.cloaked();
-    List<Assignment> assignments = assignmentService.findAssignmentByAssigneeId(userCloaked.getId());
+    List<Task> tasks = taskService.findTaskByAssigneeId(userCloaked.getId());
     List<RSVP> rsvps = inviteService.findRSVPsByGuestId(userCloaked.getId());
     List<Event> events = eventService.findEventsByHost(userCloaked.getId());
     List<Review> reviews = reviewService.findAllReviewsByUserId(userCloaked.getId());
-    UserData userData = new UserData(userCloaked, assignments, rsvps, events, reviews);
+    UserData userData = new UserData(userCloaked, tasks, rsvps, events, reviews);
     return userData;
   }
 

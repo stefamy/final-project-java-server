@@ -1,16 +1,14 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
-import com.example.wbdvsp20astefanifinalprojectserver.models.Assignment;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
-import com.example.wbdvsp20astefanifinalprojectserver.models.GuestList;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
+import com.example.wbdvsp20astefanifinalprojectserver.models.Task;
 import com.example.wbdvsp20astefanifinalprojectserver.models.User;
-import com.example.wbdvsp20astefanifinalprojectserver.repositories.AssignmentRepository;
+import com.example.wbdvsp20astefanifinalprojectserver.repositories.TaskRepository;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.EventRepository;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.InviteRepository;
 import com.example.wbdvsp20astefanifinalprojectserver.repositories.UserRepository;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +26,10 @@ public class EventService {
   InviteService inviteService;
 
   @Autowired
-  AssignmentService assignmentService;
+  TaskService taskService;
 
   @Autowired
-  AssignmentRepository assignmentRepository;
+  TaskRepository taskRepository;
 
   @Autowired
   UserRepository userRepository;
@@ -46,7 +44,7 @@ public class EventService {
     event.setHostUsername(user.getUsername());
     Event newEvent = repository.save(event);
     inviteService.createFirstInvite(userId, newEvent.getId());
-    assignmentService.createSampleAssignment(newEvent.getId());
+    taskService.createSampleTask(newEvent.getId());
     return newEvent;
   }
 
@@ -73,11 +71,11 @@ public class EventService {
   }
 
   public int deleteEvent(Integer eventId) {
-    List<Assignment> assignments = assignmentRepository.findAllAssignmentsForEvent(eventId);
+    List<Task> tasks = taskRepository.findAllTasksForEvent(eventId);
     List<Invite> invites = inviteRepository.findAllInvitesForEvent(eventId);
 
-    for (int i = 0; i < assignments.size(); i++) {
-      assignmentRepository.deleteById(assignments.get(i).getId());
+    for (int i = 0; i < tasks.size(); i++) {
+      taskRepository.deleteById(tasks.get(i).getId());
     }
     for (int i = 0; i < invites.size(); i++) {
       inviteRepository.deleteById(invites.get(i).getId());

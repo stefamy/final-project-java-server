@@ -19,10 +19,6 @@ public class Event {
   private String date;
   private String startTime;
   private String endTime;
-  private String foodType;
-  private String groupType;
-  private String specialOccasion;
-  private String dressType;
   private String locationName;
   private String locationStreet1;
   private String locationStreet2;
@@ -88,38 +84,6 @@ public class Event {
 
   public void setEndTime(String endTime) {
     this.endTime = endTime;
-  }
-
-  public String getFoodType() {
-    return foodType;
-  }
-
-  public void setFoodType(String foodType) {
-    this.foodType = foodType;
-  }
-
-  public String getGroupType() {
-    return groupType;
-  }
-
-  public void setGroupType(String groupType) {
-    this.groupType = groupType;
-  }
-
-  public String getSpecialOccasion() {
-    return specialOccasion;
-  }
-
-  public void setSpecialOccasion(String specialOccasion) {
-    this.specialOccasion = specialOccasion;
-  }
-
-  public String getDressType() {
-    return dressType;
-  }
-
-  public void setDressType(String dressType) {
-    this.dressType = dressType;
   }
 
   public String getLocationName() {

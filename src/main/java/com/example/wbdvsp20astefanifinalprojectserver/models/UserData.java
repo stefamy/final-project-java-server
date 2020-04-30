@@ -5,15 +5,15 @@ import java.util.List;
 public class UserData {
 
   private User profile;
-  private List<Assignment> assignments;
+  private List<Task> tasks;
   private List<RSVP> rsvps;
   private List<Event> events;
   private List<Review> reviews;
 
-  public UserData(User user, List<Assignment> assignments, List<RSVP> rsvps, List<Event> events,
+  public UserData(User user, List<Task> tasks, List<RSVP> rsvps, List<Event> events,
       List<Review> reviews) {
     this.profile = user;
-    this.assignments = assignments;
+    this.tasks = tasks;
     this.rsvps = rsvps;
     this.events = events;
     this.reviews = reviews;
@@ -27,13 +27,13 @@ public class UserData {
     this.profile = profile;
   }
 
-  public List<Assignment> getAssignments() {
-    return assignments;
+  public List<Task> getTasks() {
+    return tasks;
   }
 
-  public void setAssignments(
-      List<Assignment> assignments) {
-    this.assignments = assignments;
+  public void setTasks(
+      List<Task> tasks) {
+    this.tasks = tasks;
   }
 
   public List<RSVP> getRsvps() {
