@@ -1,6 +1,7 @@
 package com.example.wbdvsp20astefanifinalprojectserver.controllers;
 
 import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
+import com.example.wbdvsp20astefanifinalprojectserver.models.EventData;
 import com.example.wbdvsp20astefanifinalprojectserver.services.EventService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,16 @@ public class EventController {
         return service.createEvent(userId, event);
     }
 
-    // READ An event by ID
+    // READ An event by Id
     @GetMapping("/api/events/{eventId}")
     public Event findEventById(@PathVariable("eventId") Integer eventId) {
         return service.findEventById(eventId);
+    }
+
+    // READ All event data by Id
+    @GetMapping("/api/events/{eventId}/data")
+    public EventData findEventDataById(@PathVariable("eventId") Integer eventId) {
+      return service.findEventDataById(eventId);
     }
 
     // READ All events for host
@@ -45,7 +52,7 @@ public class EventController {
       return service.findEventsByGuest(guestId);
     }
 
-  // UPDATE An event
+    // UPDATE An event
     @PutMapping("/api/events/{eventId}")
     public int updateEvent(@PathVariable("eventId") Integer eventId, @RequestBody Event event) {
         return service.updateEvent(eventId, event);
@@ -59,4 +66,4 @@ public class EventController {
 
 }
 
-//        java -jar target/*.jar
+//  java -jar target/*.jar

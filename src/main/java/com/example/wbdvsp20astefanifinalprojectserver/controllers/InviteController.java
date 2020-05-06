@@ -1,13 +1,8 @@
 package com.example.wbdvsp20astefanifinalprojectserver.controllers;
 
 import com.example.wbdvsp20astefanifinalprojectserver.models.Guest;
-import com.example.wbdvsp20astefanifinalprojectserver.models.GuestList;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Invite;
-import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
-import com.example.wbdvsp20astefanifinalprojectserver.models.User;
 import com.example.wbdvsp20astefanifinalprojectserver.services.InviteService;
-import com.example.wbdvsp20astefanifinalprojectserver.services.EventService;
-import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
     // CREATE Invite for an event
     @PostMapping("/api/events/{eventId}/invites")
-    public Guest createInvite(@PathVariable("eventId") Integer eventId, @RequestBody Invite invite) {
-      return service.createInvite(eventId, invite);
+    public Guest createGuestInvite(@PathVariable("eventId") Integer eventId, @RequestBody Guest guest) {
+      return service.createGuestInvite(eventId, guest);
     }
 
     // READ An invite by ID
@@ -41,14 +36,14 @@ import org.springframework.web.bind.annotation.RestController;
 
     // READ All invites for event
     @GetMapping("/api/events/{eventId}/invites")
-    public GuestList findAllInvitesForEvent(@PathVariable("eventId") Integer eventId) {
+    public List<Guest> findAllInvitesForEvent(@PathVariable("eventId") Integer eventId) {
       return service.findAllInvitesForEvent(eventId);
     }
 
     // UPDATE An invite
     @PutMapping("/api/invites/{inviteId}")
-    public int updateInvite(@PathVariable("inviteId") Integer inviteId, @RequestBody Invite invite) {
-      return service.updateInvite(inviteId, invite);
+    public int updateInvite(@PathVariable("inviteId") Integer inviteId, @RequestBody Guest guest) {
+      return service.updateInvite(inviteId, guest);
     }
 
     // DELETE An event

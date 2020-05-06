@@ -198,4 +198,18 @@ public class User {
     return this;
   }
 
+  public User publicProfile() {
+    this.password = "***";
+    this.lastName = lastName.substring(0,0);
+    this.phone = "";
+    this.streetAddress1 = "";
+    this.streetAddress2 = "";
+    this.city = "";
+    this.state = "";
+    this.zip = "";
+
+    return this;
+  }
+
+
 }

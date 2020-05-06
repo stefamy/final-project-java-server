@@ -42,10 +42,10 @@ public class TaskService {
      public int createSampleTask(Integer eventId) {
       Task sampleTask = new Task();
       sampleTask.setEventId(eventId);
-      sampleTask.setTitle("This is an event task.");
-      sampleTask.setDescription("This is only a sample. Delete or edit this one, and make some of your own!");
+      sampleTask.setTitle("Create Task List.");
+      sampleTask.setDescription("This is only a sample task. Delete or edit this one and make some of your own!");
       sampleTask.setStatus("Pending");
-      sampleTask.setStatus("Event Prep");
+      sampleTask.setType("Event Prep");
       repository.save(sampleTask);
       return 1;
      }

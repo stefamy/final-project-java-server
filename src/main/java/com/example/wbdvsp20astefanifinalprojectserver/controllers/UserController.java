@@ -56,20 +56,20 @@ public class UserController {
     return user;
   }
 
-  @PostMapping("/user/upcoming")
+  @PostMapping("/user/data")
   public UserData findCurrentUserData(HttpSession session) {
     User user = (User) session.getAttribute("profile");
     if (user != null) {
-      return service.findCurrentUserData(user);
+      return service.findCurrentUserDataStore(user);
     }
     return null;
   }
 
   @PutMapping("/user")
-  public User updateUser(HttpSession session, @RequestBody User updatedUser) {
+  public int updateUser(HttpSession session, @RequestBody User updatedUser) {
     User user = service.updateUser(updatedUser);
-    session.setAttribute("user", user);
-    return user;
+//    session.setAttribute("profile", user);
+    return 1;
   }
 
   /* ----- Rest API user requests ----- */

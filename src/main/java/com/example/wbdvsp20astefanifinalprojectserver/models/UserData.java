@@ -4,19 +4,29 @@ import java.util.List;
 
 public class UserData {
 
+  private Integer id;
   private User profile;
   private List<Task> tasks;
-  private List<RSVP> rsvps;
+  private List<InviteEvent> invites;
   private List<Event> events;
   private List<Review> reviews;
 
-  public UserData(User user, List<Task> tasks, List<RSVP> rsvps, List<Event> events,
+  public UserData(User user, List<Task> tasks, List<InviteEvent> invites, List<Event> events,
       List<Review> reviews) {
+    this.id = user.getId();
     this.profile = user;
     this.tasks = tasks;
-    this.rsvps = rsvps;
+    this.invites = invites;
     this.events = events;
     this.reviews = reviews;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public User getProfile() {
@@ -36,12 +46,12 @@ public class UserData {
     this.tasks = tasks;
   }
 
-  public List<RSVP> getRsvps() {
-    return rsvps;
+  public List<InviteEvent> getInvites() {
+    return invites;
   }
 
-  public void setRsvps(List<RSVP> rsvps) {
-    this.rsvps = rsvps;
+  public void setInvites(List<InviteEvent> invites) {
+    this.invites = invites;
   }
 
   public List<Event> getEvents() {

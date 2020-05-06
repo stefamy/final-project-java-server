@@ -1,7 +1,7 @@
 package com.example.wbdvsp20astefanifinalprojectserver.services;
 
 import com.example.wbdvsp20astefanifinalprojectserver.models.Event;
-import com.example.wbdvsp20astefanifinalprojectserver.models.RSVP;
+import com.example.wbdvsp20astefanifinalprojectserver.models.InviteEvent;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Task;
 import com.example.wbdvsp20astefanifinalprojectserver.models.UserData;
 import com.example.wbdvsp20astefanifinalprojectserver.models.Review;
@@ -59,13 +59,13 @@ public class UserService {
     return null;
   }
 
-  public UserData findCurrentUserData(User user) {
+  public UserData findCurrentUserDataStore(User user) {
     User userCloaked = user.cloaked();
     List<Task> tasks = taskService.findTaskByAssigneeId(userCloaked.getId());
-    List<RSVP> rsvps = inviteService.findRSVPsByGuestId(userCloaked.getId());
+    List<InviteEvent> inviteEvent = inviteService.findRSVPsByGuestId(userCloaked.getId());
     List<Event> events = eventService.findEventsByHost(userCloaked.getId());
     List<Review> reviews = reviewService.findAllReviewsByUserId(userCloaked.getId());
-    UserData userData = new UserData(userCloaked, tasks, rsvps, events, reviews);
+    UserData userData = new UserData(userCloaked, tasks, inviteEvent, events, reviews);
     return userData;
   }
 

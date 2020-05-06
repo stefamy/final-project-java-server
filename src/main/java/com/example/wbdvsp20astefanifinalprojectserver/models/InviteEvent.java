@@ -1,16 +1,16 @@
 package com.example.wbdvsp20astefanifinalprojectserver.models;
 
-public class RSVP {
+public class InviteEvent {
 
   private Invite invite;
   private Event event;
 
-  public RSVP(Invite invite, Event event) {
+  public InviteEvent(Invite invite, Event event) {
     this.invite = invite;
     this.event = event;
   }
 
-  public RSVP() { }
+  public InviteEvent() { }
 
   public Invite getInvite() {
     return invite;

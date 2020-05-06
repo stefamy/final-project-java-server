@@ -25,6 +25,8 @@ public interface InviteRepository extends CrudRepository<Invite, Integer> {
     @Query(value = "SELECT * FROM Invite invite WHERE guest_id=:userId", nativeQuery = true)
     public List<Invite> findInvitesByGuestId(@Param("userId") Integer userId);
 
+    @Query(value = "SELECT * FROM Invite invite WHERE guest_id=:userId AND response='Yes'", nativeQuery = true)
+    public List<Invite> findAcceptedInvitesByGuestId(@Param("userId") Integer userId);
 
 }
 
